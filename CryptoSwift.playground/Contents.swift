@@ -90,22 +90,37 @@ let c4 = "32510ba9aab2a8a4fd06414fb517b5605cc0aa0dc91a8908c2064ba8ad5ea06a029056
 
 let c1c2 = xor(c1, c2)
 
-c1c2.lookup(test: "0 probably enjoy ", filter: " or the number 15")
-let k = c2.recoverKey(m: "0 probably enjoy ", from: 10)
-let m = c1.decrypt(key: k, offset: 10)
-print(m.ascii())
+let test = " the "
 
-// recovered - key
+c1c2.lookup(test: test, filter: nil)
+
+// -> found "robab" -> maybe "probably" ?
+
+c1c2.lookup(test: " probably ", filter: "the")
+
+// -> found " or the num" -> maybe " or the number " ?
+
+c1c2.lookup(test: " or the number ", filter: " probably ")
+
+// -> found "0 probably enjo" -> maybe "0 probably enjoy " ?
+// and so on so on..
+
+c1c2.lookup(test: "0 probably enjoy ", filter: "the")
+
+let k = c2.recoverKey(m: "0 probably enjoy ", from: 10)
+let m = c4.decrypt(key: k, offset: 10)
+print("m:", m.ascii())
+
+// recovered - key [part 10-27 bytes]
 // 612acd6395102eafce78aa7fed28a07f6b
 
-
-let c3c4 = xor(c3, c4)
-//c1c2.lookup(test: " ext produced by ", filter: nil)
-
-let m3 = "0 probably enjoy "
-
-
-
+//
+//let c1c3 = xor(c1, c3)
+//c1c3.lookup(test: test, filter: nil)
+//print("---")
+//
+//let c3c4 = xor(c3, c4)
+//c3c4.lookup(test: test, filter: nil)
 
 
 
