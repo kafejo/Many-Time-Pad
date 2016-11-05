@@ -48,8 +48,8 @@ Now we know that m1 or m2 contains string "0 probably enjoy " starting from 10th
 
 ```Swift
 let k = c2.recoverKey(m: "0 probably enjoy ", from: 10)
-let m = c4.decrypt(key: k, offset: 10)
-print("m:", m.ascii())
+let m4 = c4.decrypt(key: k, offset: 10)
+print("m4:", m.ascii()) // Print decrypted c4 part
 
 // recovered - key [part 10-27 bytes]
 // 612acd6395102eafce78aa7fed28a07f6b
