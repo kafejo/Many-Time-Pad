@@ -30,7 +30,7 @@ c1c2.lookup(test: test, filter: nil)
 
 We found ascii sequence "robab" which may be word " probably ". Lets continue digging.
 
-```
+```Swift
 c1c2.lookup(test: " probably ", filter: "the")
 
 // -> found " or the num" -> maybe " or the number " ?
@@ -46,7 +46,7 @@ c1c2.lookup(test: "0 probably enjoy ", filter: "the")
 
 Now we know that m1 or m2 contains string "0 probably enjoy " starting from 10th to 27th position (result of lookup). Now we can recover part of the key
 
-```
+```Swift
 let k = c2.recoverKey(m: "0 probably enjoy ", from: 10)
 let m = c4.decrypt(key: k, offset: 10)
 print("m:", m.ascii())
